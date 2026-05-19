@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vidpickr"
+version = "0.1.0"
+description = "Official Python SDK for the VidPickr API — download YouTube videos with one function call."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "VidPickr", email = "noreply@vidpickr.com" },
+]
+keywords = ["youtube", "youtube-downloader", "video", "download", "mp4", "vidpickr"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+# Pulls the imageio-ffmpeg wheel which ships a pre-built ffmpeg binary
+# for every platform. Use this when the target environment doesn't have
+# ffmpeg on PATH (CI runners, Docker base images, end-user laptops).
+# Adds ~50 MB to the install but means the SDK works zero-config.
+bundled-ffmpeg = ["imageio-ffmpeg>=0.5"]
+
+[project.urls]
+Homepage = "https://vidpickr.com/docs"
+Documentation = "https://vidpickr.com/docs"
+Repository = "https://github.com/vidpickr/sdk-python"
+Issues = "https://github.com/vidpickr/sdk-python/issues"
+
+[tool.setuptools.packages.find]
+include = ["vidpickr*"]
+exclude = ["examples*", "tests*"]
